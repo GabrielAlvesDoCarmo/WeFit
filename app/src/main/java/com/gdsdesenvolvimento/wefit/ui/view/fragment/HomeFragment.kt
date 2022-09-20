@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>() {
     }
 
     override fun codeInjectionViewCreated() {
-        
+
     }
 
 }
