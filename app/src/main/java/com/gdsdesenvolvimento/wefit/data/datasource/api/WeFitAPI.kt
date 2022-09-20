@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface WeFitAPI {
-    @GET("/{users}/repos ")
+    @GET("{users}/repos ")
     suspend fun getRepo(
         @Path(value = "users") repo : String
     ) : Response<ResponseApi>

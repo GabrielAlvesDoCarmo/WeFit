@@ -4,21 +4,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.gdsdesenvolvimento.wefit.R
 import com.gdsdesenvolvimento.wefit.databinding.ActivityMainBinding
-import com.gdsdesenvolvimento.wefit.di.AppInjection
-import com.gdsdesenvolvimento.wefit.ui.view.base.BaseWithViewModelActivity
-import com.gdsdesenvolvimento.wefit.ui.viewmodel.activity.MainViewModel
+import com.gdsdesenvolvimento.wefit.ui.view.base.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : BaseWithViewModelActivity<ActivityMainBinding,MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun activityBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
-    override fun activityViewModel(): MainViewModel {
-        return AppInjection.mainViewModel(this)
-    }
-
-    override fun codeInjection() {
+    override fun code() {
         initNavigation()
         listeners()
     }
@@ -31,9 +25,8 @@ class MainActivity : BaseWithViewModelActivity<ActivityMainBinding,MainViewModel
 
     private fun listeners() = with(binding) {
         included.btnSettings.setOnClickListener {
-            //TODO(colocar o clique na budega)
-        }
 
+        }
     }
 
 }

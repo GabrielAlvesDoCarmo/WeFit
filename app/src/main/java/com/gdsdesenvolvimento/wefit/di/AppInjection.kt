@@ -1,21 +1,12 @@
 package com.gdsdesenvolvimento.wefit.di
 
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
-import com.gdsdesenvolvimento.wefit.ui.viewmodel.activity.MainViewModel
-import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.FavoriteViewModel
-import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.HomeViewModel
+import android.content.Context
+import androidx.room.Room
+import com.gdsdesenvolvimento.wefit.data.database.db.WeFitDB
+import com.gdsdesenvolvimento.wefit.data.datasource.api.WeFitAPI
+import com.gdsdesenvolvimento.wefit.data.repository.WeFitRepository
 
 object AppInjection {
-    fun mainViewModel(owner : ViewModelStoreOwner) : MainViewModel{
-        return ViewModelProvider(owner)[MainViewModel::class.java]
-    }
-
-    fun favoriteViewModel(owner: ViewModelStoreOwner): FavoriteViewModel {
-        return ViewModelProvider(owner)[FavoriteViewModel::class.java]
-    }
-
-    fun homeViewModel(owner: ViewModelStoreOwner): HomeViewModel {
-        return ViewModelProvider(owner)[HomeViewModel::class.java]
-    }
+    fun initBd(context: Context)= Room.databaseBuilder(context, WeFitDB::class.java, "Wefit.db").build()
+    fun getRepository(db: WeFitDB,api : WeFitAPI)= WeFitRepository(db,api)
 }

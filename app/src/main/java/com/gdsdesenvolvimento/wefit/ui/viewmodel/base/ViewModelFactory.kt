@@ -1,5 +1,6 @@
 package com.gdsdesenvolvimento.wefit.ui.viewmodel.base
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gdsdesenvolvimento.wefit.data.repository.WeFitRepository
@@ -7,7 +8,7 @@ import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.FavoriteViewModel
 import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.HomeViewModel
 
 class ViewModelFactory(
-    private val weFitRepository: WeFitRepository
+    private val weFitRepository: WeFitRepository,
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when{

@@ -1,40 +1,49 @@
 package com.gdsdesenvolvimento.wefit.ui.view.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
+import com.gdsdesenvolvimento.wefit.data.database.db.WeFitDB
+import com.gdsdesenvolvimento.wefit.data.datasource.retorfit.RetrofitInstance
 import com.gdsdesenvolvimento.wefit.databinding.FragmentHomeBinding
 import com.gdsdesenvolvimento.wefit.di.AppInjection
-import com.gdsdesenvolvimento.wefit.ui.view.adapter.HomeAdapter
-import com.gdsdesenvolvimento.wefit.ui.view.base.BaseFragment
+import com.gdsdesenvolvimento.wefit.ui.viewmodel.base.ViewModelFactory
 import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.HomeViewModel
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-    override fun fragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentHomeBinding {
-        return FragmentHomeBinding.inflate(inflater, container, false)
+class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var viewModel: HomeViewModel
+    private val db by lazy {
+        AppInjection.initBd(requireContext())
     }
 
-    override fun fragmentViewModel(): HomeViewModel {
-        return AppInjection.homeViewModel(this)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun codeInjectionCreateView() {
-        return
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = initViewModel()
+        viewModel.getRepositoryApi()
     }
 
-    override fun codeInjectionViewCreated() {
-        initRv()
+    private fun initViewModel(): HomeViewModel {
+        return ViewModelProvider(
+            this,
+            ViewModelFactory(
+                AppInjection.getRepository(
+                    db,
+                    RetrofitInstance.api
+                )
+            )
+        )[HomeViewModel::class.java]
     }
-
-    private fun initRv()= with(binding) {
-        rvHome.apply {
-            adapter = HomeAdapter()
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-    }
-
-
 }
