@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
     android:background="@color/white"
-    android:elevation="60sp">
+    android:elevation="5sp">
 
     <TextView
         android:id="@+id/textView"
