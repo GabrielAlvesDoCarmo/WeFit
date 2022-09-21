@@ -28,9 +28,20 @@ class ModalBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentModalBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        listeners()
+    }
+
+    private fun listeners() = with(binding) {
+        closeModal.setOnClickListener {
+            dismiss()
+        }
     }
 
 }
