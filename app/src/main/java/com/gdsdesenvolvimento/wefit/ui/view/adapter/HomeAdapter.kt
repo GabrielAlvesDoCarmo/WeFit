@@ -51,7 +51,7 @@ class HomeAdapter(
         }
         holder.binding.btnFavorite.setOnClickListener {
             resultClick.clickFavorite(infoRepo)
-            listItems.removeAt(position)
+            listItems.remove(item)
             notifyItemRemoved(position)
         }
     }
