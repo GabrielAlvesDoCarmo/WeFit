@@ -42,11 +42,17 @@ class FavoriteAdapter(
         holder.binding.textDescription.text = infoRepo.description
         Glide.with(holder.itemView.context).load(infoRepo.ownerAvatarUrl).into(holder.binding.profileImage)
         holder.binding.numberFavorite.text = infoRepo.stargazersCount.toString()
-        holder.binding.languageName.text = infoRepo.language
+        holder.binding.languageName.text = defineLanguage(infoRepo)
         holder.binding.root.setOnClickListener {
             openWebPage(infoRepo.htmlUrl)
         }
     }
+
+    private fun defineLanguage(item: InfoRepo): String {
+        return item.language ?: "Não Encontrado"
+
+    }
+
     private fun openWebPage(url: String) {
         val webpage: Uri = Uri.parse(url)
         val intent = Intent(Intent.ACTION_VIEW, webpage)
