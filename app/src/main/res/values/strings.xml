@@ -6,4 +6,8 @@
     <string name="alterar_usuario_selecionado">Alterar usuario selecionado</string>
     <string name="pesquisando">Pesquisando</string>
     <string name="erro">Error</string>
+    <string name="nome_do_usuario">Nome do usuario</string>
+    <string name="salvar">Salvar</string>
+    <string name="_0">0</string>
+    <string name="favoritar">Favoritar</string>
 </resources>
