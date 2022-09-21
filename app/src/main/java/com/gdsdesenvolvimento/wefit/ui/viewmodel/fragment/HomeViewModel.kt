@@ -2,6 +2,7 @@ package com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.gdsdesenvolvimento.wefit.data.model.db.InfoRepo
 import com.gdsdesenvolvimento.wefit.data.model.responseApi.ResponseApi
 import com.gdsdesenvolvimento.wefit.data.repository.WeFitRepository
 import com.gdsdesenvolvimento.wefit.ui.viewmodel.base.BaseViewModel
@@ -39,4 +40,10 @@ class HomeViewModel(
         } else {
             _searchRepo.value = ApiSearchState.Error(response.message().toString())
         }
+
+    fun saveFavoriteInBD(infoRepo: InfoRepo) {
+        launcher {
+            weFitRepository.insert(infoRepo)
+        }
+    }
 }
