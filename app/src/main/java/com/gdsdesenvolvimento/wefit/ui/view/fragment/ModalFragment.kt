@@ -66,7 +66,8 @@ class ModalFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         btnSalvar.setOnClickListener {
-            viewModel.sendForHome(editNewUserName.text.toString())
+            viewModel.sendForHome(editNewUserName.text.toString().trim())
+            editNewUserName.setText("")
         }
     }
 

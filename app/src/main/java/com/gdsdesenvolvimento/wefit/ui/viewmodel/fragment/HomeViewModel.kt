@@ -14,9 +14,11 @@ class HomeViewModel(
 ) : BaseViewModel() {
     private var _searchRepo = MutableLiveData<ApiSearchState>()
     val searchRepo: LiveData<ApiSearchState> get() = _searchRepo
+
     init {
         _searchRepo.value = ApiSearchState.Empty
     }
+
     fun getRepositoryApi(name: String = "appswefit") {
         _searchRepo.value = ApiSearchState.Loading
         launcher {
@@ -25,7 +27,7 @@ class HomeViewModel(
                 verifyResponse(response)
             } catch (e: Exception) {
                 e.printStackTrace()
-                _searchRepo.value = ApiSearchState.Error(e.message.toString())
+                _searchRepo.value = ApiSearchState.Error(e.message.toString() + "Nao existe")
             }
         }
     }
@@ -41,7 +43,6 @@ class HomeViewModel(
 
     fun saveFavoriteInBD(infoRepo: InfoRepo) {
         launcher {
-
             weFitRepository.insert(infoRepo)
         }
     }
