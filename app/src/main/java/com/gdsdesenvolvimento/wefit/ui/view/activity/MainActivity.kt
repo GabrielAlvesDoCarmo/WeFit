@@ -6,6 +6,7 @@ import com.gdsdesenvolvimento.wefit.R
 import com.gdsdesenvolvimento.wefit.databinding.ActivityMainBinding
 import com.gdsdesenvolvimento.wefit.ui.view.base.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun activityBinding(): ActivityMainBinding {

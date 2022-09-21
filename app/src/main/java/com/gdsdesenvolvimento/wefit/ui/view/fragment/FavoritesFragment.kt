@@ -48,7 +48,7 @@ class FavoritesFragment : Fragment() {
     private fun initViewModel(): FavoriteViewModel {
         return ViewModelProvider(
             this, ViewModelFactory(
-                WeFitRepository(
+                AppInjection.getRepository(
                     db,
                     RetrofitInstance.api
                 )

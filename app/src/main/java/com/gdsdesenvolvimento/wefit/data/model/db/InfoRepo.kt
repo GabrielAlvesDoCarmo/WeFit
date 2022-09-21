@@ -13,5 +13,4 @@ data class InfoRepo(
     @ColumnInfo(name = "stargazers_count") val stargazersCount: Int,
     @ColumnInfo(name = "language")val language: String? = "not-language",
     @ColumnInfo(name = "html_url")val htmlUrl: String
-) {
-}
+)

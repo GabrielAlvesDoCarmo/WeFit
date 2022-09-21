@@ -93,10 +93,6 @@ class HomeFragment : Fragment() {
     private fun initRecyclerView(response: ResponseApi) = with(binding){
         rvHome.apply {
             adapter = HomeAdapter(response,object : RvClickItem{
-                override fun clickCard(htmlUrl: String) {
-                    openWebPage(htmlUrl)
-                }
-
                 override fun clickFavorite(infoRepo: InfoRepo) {
                     viewModel.saveFavoriteInBD(infoRepo)
                 }
