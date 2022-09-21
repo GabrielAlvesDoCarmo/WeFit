@@ -43,6 +43,7 @@ class HomeViewModel(
 
     fun saveFavoriteInBD(infoRepo: InfoRepo) {
         launcher {
+
             weFitRepository.insert(infoRepo)
         }
     }

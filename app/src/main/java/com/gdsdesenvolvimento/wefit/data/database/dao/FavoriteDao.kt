@@ -15,7 +15,7 @@ interface FavoriteDao {
     suspend fun insert(infoRepo: InfoRepo)
 
     @Query("SELECT * FROM InfoRepo")
-    fun getAll(): LiveData<List<InfoRepo>>
+    suspend fun getAll(): List<InfoRepo>
 
     @Delete
     suspend fun delete(infoRepo: InfoRepo)
