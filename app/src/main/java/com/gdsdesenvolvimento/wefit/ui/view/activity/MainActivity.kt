@@ -33,7 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             val modalFragment: ModalFragment =
                 ModalFragment.newInstance()
             modalFragment.show(
-                supportFragmentManager, "modal"
+                supportFragmentManager,null
             )
         }
     }

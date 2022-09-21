@@ -1,14 +1,13 @@
 package com.gdsdesenvolvimento.wefit.data.datasource.retorfit
 
 import com.gdsdesenvolvimento.wefit.data.datasource.api.WeFitAPI
+import com.gdsdesenvolvimento.wefit.util.constants.AppConstants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitInstance {
-    companion object{
-        const val BASE_URL = "https://api.github.com/users/"
+object RetrofitInstance {
         private val retrofit by lazy {
             val logging = HttpLoggingInterceptor()
             logging.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -19,8 +18,7 @@ class RetrofitInstance {
                 .client(client)
                 .build()
         }
-        val api by lazy {
+        val api: WeFitAPI by lazy {
             retrofit.create(WeFitAPI::class.java)
         }
-    }
 }

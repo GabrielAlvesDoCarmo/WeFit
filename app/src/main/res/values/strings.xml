@@ -5,4 +5,5 @@
     <string name="fit">Fit</string>
     <string name="alterar_usuario_selecionado">Alterar usuario selecionado</string>
     <string name="pesquisando">Pesquisando</string>
+    <string name="erro">Error</string>
 </resources>

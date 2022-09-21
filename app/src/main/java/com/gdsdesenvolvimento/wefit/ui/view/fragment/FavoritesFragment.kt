@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gdsdesenvolvimento.wefit.R
 import com.gdsdesenvolvimento.wefit.data.datasource.retorfit.RetrofitInstance
 import com.gdsdesenvolvimento.wefit.data.model.db.InfoRepo
-import com.gdsdesenvolvimento.wefit.data.repository.WeFitRepository
 import com.gdsdesenvolvimento.wefit.databinding.FragmentFavoritesBinding
 import com.gdsdesenvolvimento.wefit.di.AppInjection
 import com.gdsdesenvolvimento.wefit.ui.view.adapter.FavoriteAdapter
@@ -17,7 +17,6 @@ import com.gdsdesenvolvimento.wefit.ui.viewmodel.base.ViewModelFactory
 import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.FavoriteViewModel
 import com.gdsdesenvolvimento.wefit.util.extensions.dialog
 import com.gdsdesenvolvimento.wefit.util.extensions.visibility
-import com.gdsdesenvolvimento.wefit.util.result.RvClickItem
 import com.gdsdesenvolvimento.wefit.util.state.FavoritesListState
 
 class FavoritesFragment : Fragment() {
@@ -67,7 +66,7 @@ class FavoritesFragment : Fragment() {
                 is FavoritesListState.Error -> {
                     binding.progressBar.visibility("i")
                     binding.rvHome.visibility("v")
-                    dialog("Error", favoriteState.msg, true) {
+                    dialog(getString(R.string.erro), favoriteState.msg, true) {
                         return@dialog
                     }
                 }

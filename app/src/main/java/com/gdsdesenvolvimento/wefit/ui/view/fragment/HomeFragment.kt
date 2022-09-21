@@ -1,7 +1,5 @@
 package com.gdsdesenvolvimento.wefit.ui.view.fragment
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gdsdesenvolvimento.wefit.R
 import com.gdsdesenvolvimento.wefit.data.datasource.retorfit.RetrofitInstance
 import com.gdsdesenvolvimento.wefit.data.model.db.InfoRepo
 import com.gdsdesenvolvimento.wefit.data.model.responseApi.ResponseApi
@@ -81,7 +80,7 @@ class HomeFragment : Fragment() {
                 is ApiSearchState.Error -> {
                     binding.progressBar.visibility("i")
                     binding.rvHome.visibility("v")
-                    dialog("Error", apiSearchState.msg, true) {
+                    dialog(getString(R.string.erro), apiSearchState.msg, true) {
                         return@dialog
                     }
                 }

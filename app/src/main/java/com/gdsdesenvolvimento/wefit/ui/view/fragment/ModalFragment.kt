@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.gdsdesenvolvimento.wefit.R
 import com.gdsdesenvolvimento.wefit.data.datasource.retorfit.RetrofitInstance
 import com.gdsdesenvolvimento.wefit.databinding.FragmentModalBinding
@@ -80,7 +79,7 @@ class ModalFragment : BottomSheetDialogFragment() {
                 }
                 is SearchUserState.Error -> {
                     binding.txtTitle.text = getString(R.string.alterar_usuario_selecionado)
-                    dialog("Error", searchState.msg, true) {
+                    dialog(getString(R.string.erro), searchState.msg, true) {
                         return@dialog
                     }
                 }
