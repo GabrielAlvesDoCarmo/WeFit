@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
                     viewModel.saveFavoriteInBD(infoRepo)
                 }
 
-            })
+            },this@HomeFragment)
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)

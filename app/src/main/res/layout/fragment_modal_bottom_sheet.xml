@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop ="8dp"
+        tools:context=".ui.view.fragment.ModalBottomSheetFragment"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_bottom_sheet_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="@string/alterar_usuario_selecionado"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/tv_btn_add_photo_camera"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@android:color/white"
+            android:drawablePadding="32dp"
+            android:gravity="start|center_vertical"
+            android:hint="Nome do usuario"
+            android:textColor="@color/teal_200"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tv_btn_add_photo_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@android:color/white"
+            android:drawablePadding="32dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Salvar"
+            android:background="@color/gray"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>

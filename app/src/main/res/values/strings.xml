@@ -3,4 +3,5 @@
     <!-- Splash -->
     <string name="we">We</string>
     <string name="fit">Fit</string>
+    <string name="alterar_usuario_selecionado">Alterar usuario selecionado</string>
 </resources>
