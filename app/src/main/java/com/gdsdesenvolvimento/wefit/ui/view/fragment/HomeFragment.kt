@@ -18,6 +18,7 @@ import com.gdsdesenvolvimento.wefit.di.AppInjection
 import com.gdsdesenvolvimento.wefit.ui.view.adapter.HomeAdapter
 import com.gdsdesenvolvimento.wefit.ui.viewmodel.base.ViewModelFactory
 import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.HomeViewModel
+import com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment.ModalViewModel
 import com.gdsdesenvolvimento.wefit.util.extensions.dialog
 import com.gdsdesenvolvimento.wefit.util.extensions.visibility
 import com.gdsdesenvolvimento.wefit.util.result.RvClickItem
@@ -40,7 +41,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        verifyNewName()
         return binding.root
+    }
+
+    private fun verifyNewName() {
+        if (ModalViewModel.newName.isNotEmpty()){
+            viewModel.getRepositoryApi(ModalViewModel.newName)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -90,25 +98,17 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerView(response: ResponseApi) = with(binding){
+    private fun initRecyclerView(response: ResponseApi) = with(binding) {
         rvHome.apply {
-            adapter = HomeAdapter(response,object : RvClickItem{
+            adapter = HomeAdapter(response, object : RvClickItem {
                 override fun clickFavorite(infoRepo: InfoRepo) {
                     viewModel.saveFavoriteInBD(infoRepo)
                 }
-
-            },this@HomeFragment)
+            }, this@HomeFragment)
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             )
-        }
-    }
-    private fun openWebPage(url: String) {
-        val webpage: Uri = Uri.parse(url)
-        val intent = Intent(Intent.ACTION_VIEW, webpage)
-        if (intent.resolveActivity(requireActivity().packageManager) != null) {
-            startActivity(intent)
         }
     }
 }

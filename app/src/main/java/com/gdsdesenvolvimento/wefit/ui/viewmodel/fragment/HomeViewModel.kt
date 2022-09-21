@@ -17,7 +17,6 @@ class HomeViewModel(
     init {
         _searchRepo.value = ApiSearchState.Empty
     }
-
     fun getRepositoryApi(name: String = "appswefit") {
         _searchRepo.value = ApiSearchState.Loading
         launcher {
