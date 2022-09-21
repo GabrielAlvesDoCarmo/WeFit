@@ -2,7 +2,7 @@ package com.gdsdesenvolvimento.wefit.util.state
 
 import com.gdsdesenvolvimento.wefit.data.model.responseApi.ResponseApi
 
-sealed class ApiSearchState {
+sealed class ApiSearchState{
     object Loading : ApiSearchState()
     object Empty : ApiSearchState()
     data class Success(val data: ResponseApi) : ApiSearchState()

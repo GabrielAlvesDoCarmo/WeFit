@@ -1,7 +1,5 @@
 package com.gdsdesenvolvimento.wefit.ui.viewmodel.fragment
 
-import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gdsdesenvolvimento.wefit.data.model.responseApi.ResponseApi
@@ -26,7 +24,8 @@ class HomeViewModel(
             try {
                 val response = weFitRepository.getRepo(name)
                 verifyResponse(response)
-            }catch (e :Exception){
+            } catch (e: Exception) {
+                e.printStackTrace()
                 _searchRepo.value = ApiSearchState.Error(e.message.toString())
             }
         }
@@ -34,10 +33,10 @@ class HomeViewModel(
 
     private fun verifyResponse(response: Response<ResponseApi>) =
         if (response.isSuccessful) {
-            response.body()?.let {
-                Log.d("API", "RESULTADO -------->     ${it.toString()} ")
+            response.body()?.let { responseApi ->
+                _searchRepo.value = ApiSearchState.Success(responseApi)
             }
         } else {
-            Log.d("API", "ERRO -------->     ${response.errorBody()} ")
+            _searchRepo.value = ApiSearchState.Error(response.message().toString())
         }
 }
