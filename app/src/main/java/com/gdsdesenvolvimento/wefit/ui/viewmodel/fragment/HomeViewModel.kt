@@ -40,8 +40,23 @@ class HomeViewModel(
         } else {
             _searchRepo.value = ApiSearchState.Error(response.message().toString())
         }
-
     fun saveFavoriteInBD(infoRepo: InfoRepo) {
+        verifyDuplicate(infoRepo)
+    }
+
+    private fun verifyDuplicate(infoRepo: InfoRepo){
+        launcher {
+           try {
+               val listInfoDb = weFitRepository.getAll()
+               if (!listInfoDb.contains(infoRepo)){
+                   save(infoRepo)
+               }
+           }catch (e : Exception){
+               e.printStackTrace()
+           }
+        }
+    }
+    fun save(infoRepo: InfoRepo){
         launcher {
             weFitRepository.insert(infoRepo)
         }

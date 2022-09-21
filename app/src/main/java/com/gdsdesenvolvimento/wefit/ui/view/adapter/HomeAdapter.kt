@@ -58,6 +58,7 @@ class HomeAdapter(
 
     private fun generateInfo(item: ResponseApiItem) =
         InfoRepo(
+            id = item.id,
             fullName = item.full_name,
             description = item.description,
             ownerAvatarUrl = item.owner.avatar_url,
