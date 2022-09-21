@@ -29,6 +29,12 @@ class HomeFragment : Fragment() {
     private val db by lazy {
         AppInjection.initBd(requireContext())
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = initViewModel()
+        viewModel.getRepositoryApi()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,8 +45,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = initViewModel()
-        viewModel.getRepositoryApi()
         observers()
     }
 

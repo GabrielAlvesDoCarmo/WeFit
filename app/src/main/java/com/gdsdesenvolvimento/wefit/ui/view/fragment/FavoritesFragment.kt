@@ -27,6 +27,11 @@ class FavoritesFragment : Fragment() {
         AppInjection.initBd(requireContext())
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = initViewModel()
+        viewModel.getAllFavorites()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +42,6 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = initViewModel()
-        viewModel.getAllFavorites()
         observers()
     }
 

@@ -14,7 +14,6 @@ class HomeViewModel(
 ) : BaseViewModel() {
     private var _searchRepo = MutableLiveData<ApiSearchState>()
     val searchRepo: LiveData<ApiSearchState> get() = _searchRepo
-
     init {
         _searchRepo.value = ApiSearchState.Empty
     }
